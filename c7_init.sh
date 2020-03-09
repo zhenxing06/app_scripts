@@ -61,6 +61,7 @@ setenforce 0
         sed -i 's#\#UseDNS yes#UseDNS no#g' /etc/ssh/sshd_config 
         sed -i 's#GSSAPIAuthentication yes#GSSAPIAuthentication no#g' /etc/ssh/sshd_config 
         echo "00 00 * * *  ntpdate asia.pool.ntp.org" >> /var/spool/cron/root
+        echo "00 00 * * *  ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
         cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 }
 
