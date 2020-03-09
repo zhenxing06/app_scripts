@@ -58,7 +58,7 @@ OffSelinux() {
         sed -i 's#\#UseDNS yes#UseDNS no#g' /etc/ssh/sshd_config
         sed -i 's#GSSAPIAuthentication yes#GSSAPIAuthentication no#g' /etc/ssh/sshd_config
         echo "00 00 * * *  ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
-        cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime -R
+        /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime -R
 }
 
 
@@ -72,7 +72,7 @@ EOF
 }
 
 ChangeKernel(){
- /usr/bin/cp -f /etc/sysctl.conf /etc/sysctl.conf.bak
+ /bin/cp -f /etc/sysctl.conf /etc/sysctl.conf.bak
 cat >> /etc/sysctl.conf<<EOF
 net.ipv4.tcp_fin_timeout = 30
 net.ipv4.tcp_keepalive_time = 1200
