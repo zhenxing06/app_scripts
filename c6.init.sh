@@ -4,6 +4,7 @@
 # Auth: rzx 
 # Email: zhenxing_06@163.com
 # Desc:  init centos 6.X system
+# version: 1.0
 #################################
 
 source /etc/profile
