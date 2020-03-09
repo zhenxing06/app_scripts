@@ -51,7 +51,7 @@ ConfigSource(){
 
 SoftInstall() { 
 	yum install htop screen iftop iotop nload vim nethogs lrzsz tree lsof sysstat net-tools ntp -y
-        yum groupinstall  "Development Tools"
+        yum groupinstall  "Development Tools" -y
 }
 
 OffSelinux() {
@@ -62,7 +62,8 @@ setenforce 0
         sed -i 's#GSSAPIAuthentication yes#GSSAPIAuthentication no#g' /etc/ssh/sshd_config 
         echo "00 00 * * *  ntpdate asia.pool.ntp.org" >> /var/spool/cron/root
         echo "00 00 * * *  ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
-        cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+        test -d /etc/localtime && mv /etc/localtime /etc/localtime_bak
+        cp -R /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 }
 
 InstallWall() {
