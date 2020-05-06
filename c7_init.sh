@@ -36,6 +36,7 @@ ServerEnable() {
 	List=(sshd network rsyslog crond)
 	for x in `chkconfig --list | grep 3:on | awk '{print $1}'`;do chkconfig $x off;done
 	for i in `systemctl list-unit-files | grep enabled | awk '{print $1}'`;do systemctl disable $i;done 
+        systemctl disable NetworkManager
 	for z in ${List[*]};do chkconfig $z on; systemctl enable $z;done
 }
 
