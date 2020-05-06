@@ -1,0 +1,16 @@
+# centos7修改网卡名称为eth0
+1 ) 在安装系统的时候配置：
+   1.1 启动界面按Tab
+   1.2 修改内核选项：net.ifnames=0 biosdevname=0
+   1.3 回车 开始安装.
+
+
+# 安装系统后NetworkManager管理网络而非network:
+2 ) 安装完成后进入系统
+      2.1  执行systemctl list-unit-files | grep NetworkMan* 后,出现3个服务,全关闭 systemctl disable NetworkManager, 即可.
+  
+        [root@srv-9 ~]# systemctl list-unit-files | grep NetworkMan*
+	NetworkManager-dispatcher.service             disabled
+	NetworkManager-wait-online.service            disabled
+	NetworkManager.service                        disabled 
+     
