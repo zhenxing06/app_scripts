@@ -111,4 +111,5 @@ ServerEnable
 ConfigSource
 SoftInstall
 OffSelinux
+openlimit
 ChangeKernel
