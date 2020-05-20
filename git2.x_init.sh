@@ -9,7 +9,7 @@ functions yum_git(){
 }
 
 functions tar_git(){
-   yun remove git
+   yum remove git
    yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel 
    yum install gcc perl-ExtUtils-MakeMaker
    cd /tmp
@@ -22,3 +22,6 @@ functions tar_git(){
    source /etc/bashrc
    git --version
 }
+
+yum_git
+#tar_git
