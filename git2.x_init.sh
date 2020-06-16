@@ -2,13 +2,13 @@
 
 
 
-functions yum_git(){
+yum_git(){
   curl https://setup.ius.io | sh
   yum remove -y git | yum -y install git2u
   git --version
 }
 
-functions tar_git(){
+tar_git(){
    yum remove git
    yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel 
    yum install gcc perl-ExtUtils-MakeMaker
@@ -23,5 +23,5 @@ functions tar_git(){
    git --version
 }
 
-yum_git
-#tar_git
+#yum_git
+tar_git
