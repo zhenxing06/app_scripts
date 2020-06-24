@@ -10,8 +10,8 @@ yum_git(){
 
 tar_git(){
    yum remove git
-   yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel 
-   yum install gcc perl-ExtUtils-MakeMaker
+   yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel -y
+   yum install gcc perl-ExtUtils-MakeMaker -y
    cd /tmp
    wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.22.0.tar.gz
    tar xzf git-2.22.0.tar.gz
