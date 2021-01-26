@@ -53,6 +53,7 @@ ConfigSource(){
 SoftInstall() { 
 	yum install htop screen iftop iotop nload vim nethogs lrzsz tree lsof sysstat net-tools ntp -y
         yum groupinstall  "Development Tools" -y
+	#yum groupinstall development* -y
 }
 
 OffSelinux() {
