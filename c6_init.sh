@@ -40,10 +40,12 @@ configservice() {
 ConfigSource(){
         yum install wget curl epel* -y
         cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
-        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+        wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-6.10.repo
+
 
         cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.bak
-        wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
+        wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-archive-6.repo
+
         yum clean all
 }
 
