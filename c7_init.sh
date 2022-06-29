@@ -105,6 +105,7 @@ net.ipv4.tcp_max_syn_backlog = 8192
 net.ipv4.tcp_max_tw_buckets = 5000
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
+fs.inotify.max_user_watches=99999999
 EOF
 /sbin/sysctl -p
 }
