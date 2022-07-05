@@ -52,6 +52,22 @@ ConfigSource(){
         yum clean all
 }
 
+csource(){
+    cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+    sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+         -e 's|^#baseurl=http://mirror.centos.org|baseurl=https://mirrors.tuna.tsinghua.edu.cn|g' \
+         -i.bak \
+         /etc/yum.repos.d/CentOS-*.repo
+
+    yum install epel-release -y
+    sed -e 's!^metalink=!#metalink=!g' \
+         -e 's!^#baseurl=!baseurl=!g' \
+         -e 's!//download\.fedoraproject\.org/pub!//mirrors.tuna.tsinghua.edu.cn!g' \
+         -e 's!//download\.example/pub!//mirrors.tuna.tsinghua.edu.cn!g' \
+         -e 's!http://mirrors!https://mirrors!g' \
+         -i /etc/yum.repos.d/epel*.repo
+}
+
 SoftInstall() { 
 	yum install htop screen iftop iotop nload vim nethogs lrzsz tree lsof sysstat net-tools ntp -y
         yum groupinstall  "Development Tools" -y
@@ -114,7 +130,8 @@ EOF
 /usr/bin/touch /var/log/system.lock
 
 ServerEnable
-ConfigSource
+csource
+#ConfigSource
 SoftInstall
 OffSelinux
 openlimit
