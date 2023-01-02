@@ -23,6 +23,8 @@ systemctl enable docker
 
 ### docker 配置文件
 ```bash
+mkdir -p /data/docker
+
 vim /etc/docker/daemon.json
 {
     "data-root": "/data/docker",
@@ -42,7 +44,6 @@ vim /etc/docker/daemon.json
     ]
 }
 
-mkdir -p /data/docker
 systemctl restart docker
 ```
 
