@@ -50,6 +50,7 @@ ConfigSource(){
         cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.bak
         wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
         yum clean all
+	yum makecache
 }
 
 csource(){
@@ -130,8 +131,8 @@ EOF
 /usr/bin/touch /var/log/system.lock
 
 ServerEnable
-csource
-#ConfigSource
+#csource
+ConfigSource
 SoftInstall
 OffSelinux
 openlimit
