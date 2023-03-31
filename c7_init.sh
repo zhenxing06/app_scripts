@@ -81,8 +81,8 @@ setenforce 0
         sed -i 's#enforcing$#disabled#g' /etc/selinux/config 
         sed -i 's#\#UseDNS yes#UseDNS no#g' /etc/ssh/sshd_config 
         sed -i 's#GSSAPIAuthentication yes#GSSAPIAuthentication no#g' /etc/ssh/sshd_config 
-        echo "00 00 * * *  ntpdate asia.pool.ntp.org" >> /var/spool/cron/root
-        echo "00 00 * * *  ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
+        echo "00 00 * * *  /usr/sbin/ntpdate asia.pool.ntp.org" >> /var/spool/cron/root
+        echo "10 00 * * *  /usr/sbin/ntpdate ntp1.aliyun.com" >> /var/spool/cron/root
         test -d /etc/localtime && mv /etc/localtime /etc/localtime_bak
         cp -R /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 }
