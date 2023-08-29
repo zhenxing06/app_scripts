@@ -70,7 +70,7 @@ csource(){
 }
 
 SoftInstall() { 
-	yum install htop screen iftop iotop nload vim nethogs lrzsz tree lsof sysstat net-tools ntp Chrony -y
+	yum install htop screen iftop iotop nload vim nethogs lrzsz tree lsof sysstat net-tools ntp chrony -y
         yum groupinstall  "Development Tools" -y
 	#yum groupinstall development* -y
 }
@@ -127,6 +127,16 @@ EOF
 /sbin/sysctl -p
 }
 
+Time_ntp(){
+yum install chrony -y
+sed -i '3,6s/^/#/g' /etc/chrony.conf
+sed -i '2a server time.windows.com iburst' /etc/chrony.conf
+sed -i '3a server ntp.aliyun.com iburst' /etc/chrony.conf
+sed -i '4a server ntp.tencent.com iburst' /etc/chrony.conf
+
+systemctl restart chronyd && systemctl enable chronyd
+chronyc sources
+}
 
 /usr/bin/touch /var/log/system.lock
 
@@ -137,3 +147,4 @@ SoftInstall
 OffSelinux
 openlimit
 ChangeKernel
+Time_ntp
