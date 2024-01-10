@@ -138,6 +138,26 @@ systemctl restart chronyd && systemctl enable chronyd
 chronyc sources
 }
 
+
+change_sshd(){
+    cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+    sed -i "s/#UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
+    sed -i "s#GSSAPIAuthenticati on#GSSAPIAuthentication no#g" /etc/ssh/sshd_config
+
+}
+
+#9. 禁用ctrl+alt+del重启
+restartset(){
+  echo "===================禁用ctrl+alt+del重启===================="
+  rm -rf /usr/lib/systemd/system/ctrl-alt-del.target
+  action "完成禁用ctrl+alt+del重启" /bin/true
+  echo "==========================================================="
+  sleep 2
+}
+
+
+
+
 /usr/bin/touch /var/log/system.lock
 
 ServerEnable
@@ -148,3 +168,5 @@ OffSelinux
 openlimit
 ChangeKernel
 Time_ntp
+change_sshd
+restartset
